@@ -11,6 +11,7 @@ import { FormBuilder } from '@angular/forms';
 export class CartComponent implements OnInit {
   items;
   checkoutForm;
+  shippingCosts;
 
   constructor(
     private cartService: CartService,
@@ -20,6 +21,8 @@ export class CartComponent implements OnInit {
 
     this.checkoutForm = this.formBuilder.group({
       name: '',
+      email: '',
+      number: '',
       address: ''
     });
   }
@@ -35,6 +38,9 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.items = this.cartService.getItems();
+    this.shippingCosts = this.cartService.getShippingPrices();
 
   }
+  
+  
 }
