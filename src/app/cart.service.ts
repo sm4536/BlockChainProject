@@ -32,4 +32,8 @@ export class CartService {
     //console.log(this.http.get("http://10.165.0.221:3000/orders"));
     //this.http.post("http://10.165.0.221:3000/", JSON.stringify(this.items));
   }
+
+  updateTransaction(transaction){
+    this.http
+  }
 }

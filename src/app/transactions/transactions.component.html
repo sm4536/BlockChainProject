@@ -1,1 +1,31 @@
-<p>transactions works!</p>
+
+<h3>Transactions</h3>
+<div class="cart-transaction" *ngFor="let transaction of transactions">
+  <div>
+      <label for="name">Previous Hash :</label>
+      <label for="name">{{ transaction.prevHash }}</label>
+     
+  </div>
+  <br>
+<div>
+    <label for="number">Message:</label>
+    <input type="text"  name = "formMessage" placeholder = '{{transaction.message}}'>
+     
+  </div><br>
+    <div>
+        <label for="name">Time :</label>
+        <label for="name">{{ transaction.time }}</label>
+  </div>
+    <div>
+      <label for="name">Hash :</label>
+      <label for="name">{{ transaction.hash }}</label>
+  </div><br>
+
+  <div>
+    
+    <button (click)="updateTransaction(transaction)">Update</button>
+  </div>
+
+  <br><br>
+  
+</div>
