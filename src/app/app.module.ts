@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 @NgModule({
   imports: [
     BrowserModule,
-    
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatToolbarModule,
