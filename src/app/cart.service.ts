@@ -26,4 +26,10 @@ export class CartService {
   getShippingPrices() {
     return this.http.get('/assets/shipping.json');
   }
+
+  createOrder(items){
+    console.log('helo')
+    //console.log(this.http.get("http://10.165.0.221:3000/orders"));
+    //this.http.post("http://10.165.0.221:3000/", JSON.stringify(this.items));
+  }
 }

@@ -1,13 +1,23 @@
-
-    <a mat-button [routerLink]="'/'"><h1>My Store</h1></a>
+<mat-toolbar color="primary">
+    <span><a mat-button [routerLink]="'/'"><h1>My Store</h1></a></span>
     
     <span class="pad-space-right"></span>
-    <span>
-        <a  [routerLink]="'/Orders'"> Orders </a>
-        <a  [routerLink]="'/Inventory'"> Inventory </a>
-        <a  [routerLink]="'/Delivery'"> Delivery </a>
-        <a  [routerLink]="'/Users'"> Users </a>
+
+<span>
+        <a mat-button [routerLink]="'/Orders'"> <h1>Orders</h1></a>
+</span>
+     <!--  <span> 
+        <a mat-button [routerLink]="'/Inventory'"> <h1>Inventory</h1> </a>
     </span>
+    <span>
+        <a mat-button [routerLink]="'/Delivery'"> <h1>Delivery</h1> </a>
+    </span>
+    <span>
+        <a mat-button [routerLink]="'/Users'"> <h1>Users</h1> </a>
+    </span>-->
+
+</mat-toolbar>
+
 
 
 

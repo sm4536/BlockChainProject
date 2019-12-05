@@ -1,4 +1,5 @@
 <div *ngFor="let product of products; index as productId">
+  
   <table>
     <tr>
       <td> 
@@ -21,6 +22,7 @@
               Share
             </button>
       </td>
+    
       <td>
           <button (click)="addToCart(product)">
               Add to cart
@@ -31,4 +33,6 @@
     
   
 </div>
+
 <a  [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
+
