@@ -14,13 +14,21 @@ export class CartComponent implements OnInit {
   checkoutForm;
   shippingCosts;
   totalCost;
+ orderdetails = {
+    name : "",
+    phoneNumber: '',
+    address:'',
+    email:'',
+    itemName:'',
+    itemPrice:''
+  }
 
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
     private router:Router
   ) { 
-    this.items = this.cartService.getItems();
+    
 
     this.checkoutForm = this.formBuilder.group({
       name: '',
@@ -31,27 +39,22 @@ export class CartComponent implements OnInit {
   }
 
   onSubmit(customerData) {
-    // Process checkout data here
-    console.warn('Your order has been submitted', customerData);
-    console.warn('Item You Purchased', this.items);
-    console.log('hi');
-
-    //this.items = this.cartService.clearCart();
+    this.orderdetails.name = customerData.name;
+    this.orderdetails.email = customerData.email;
+    this.orderdetails.phoneNumber = customerData.number;
+    this.orderdetails.address = customerData.address;
+    this.orderdetails.itemName = this.items[0].name;   
+    this.orderdetails.itemPrice = this.items[0].itemPrice; 
     this.checkoutForm.reset();
-    // clear data base 
-    //save 1 record 
-    this.cartService.createOrder(this.items)
+    this.cartService.createOrder(this.orderdetails)
+    console.log(this.orderdetails)
     this.router.navigate(['/orders'])
-
-
   }
 
   ngOnInit() {
     this.items = this.cartService.getItems();
     this.shippingCosts = this.cartService.getShippingPrices();
-    
-  }
-  
-  
+   
+  } 
   
 }

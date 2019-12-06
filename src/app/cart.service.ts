@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient,HttpHeaders,HttpResponse } from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {OrderDetails} from './order-details'
+let httpHeaders = new HttpHeaders({
+  'Content-Type' : 'application/json',
+  'Cache-Control': 'no-cache'
+}); 
+let options = {
+  headers: httpHeaders
+}; 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   items = [];
   constructor(
-    private http: HttpClient
+    private httpClient: HttpClient
   ) { }
 
   addToCart(product) {
@@ -18,22 +26,22 @@ export class CartService {
     return this.items;
   }
 
+  getOrderDetails():Observable<HttpResponse<OrderDetails[]>>{
+    return this.httpClient.get<OrderDetails[]>("http://10.165.0.221:3000/orders", {observe:'response'})
+  }
   clearCart() {
     this.items = [];
     return this.items;
   }
 
   getShippingPrices() {
-    return this.http.get('/assets/shipping.json');
+    return this.httpClient.get('/assets/shipping.json');
   }
 
-  createOrder(items){
-    console.log('helo')
-    //console.log(this.http.get("http://10.165.0.221:3000/orders"));
-    //this.http.post("http://10.165.0.221:3000/", JSON.stringify(this.items));
-  }
+  createOrder(orderdetails : OrderDetails){
+    console.log('create orders');
+    console.log(orderdetails);
 
-  updateTransaction(transaction){
-    this.http
+    this.httpClient.post("http://10.165.0.221:3000/orders", orderdetails, options);
   }
 }
