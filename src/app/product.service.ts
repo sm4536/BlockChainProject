@@ -16,8 +16,8 @@ export class ProductService {
   constructor(private httpClient:HttpClient) { }
 
   getProducts(): Observable<HttpResponse<ProductCatalog[]>>{
+    //return this.httpClient.get<ProductCatalog[]>('http://10.165.0.221:3000/products', {observe:'response'});
     return this.httpClient.get<ProductCatalog[]>('http://10.165.0.221:3000/products', {observe:'response'});
-   
-   
+
   }
 }
