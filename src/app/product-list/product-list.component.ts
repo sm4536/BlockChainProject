@@ -12,7 +12,7 @@ import {ProductCatalog} from '../product-catalog';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
-  products=[];
+  products=products;
   product;
   constructor(
     private route: ActivatedRoute,
@@ -25,13 +25,13 @@ export class ProductListComponent implements OnInit{
      
 
   ngOnInit() {
-  //this.route.paramMap.subscribe(params => {
+  this.route.paramMap.subscribe(params => {
+  this.product = products[+params.get('productId')];
+  });
+  //this.productService.getProducts().subscribe(resp => {
+   //console.log(resp);
     //this.product = products[+params.get('productId')];
   //});
-  this.productService.getProducts().subscribe(resp => {
-   console.log(resp);
-    //this.product = products[+params.get('productId')];
-  });
   
 }
 
