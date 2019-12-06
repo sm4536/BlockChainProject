@@ -1,38 +1,51 @@
-<div *ngFor="let product of products; index as productId">
-  
-  <table>
-    <tr>
-      <td> 
-        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-        {{ product.name }}
-      </a>
-    </td>
-      <td>
-        <p style="text-align:center;width:600px" *ngIf="product.description">
-          Description: {{ product.description }}
-        </p>
-      </td>
-      <td>
-          <p *ngIf="product.price">
-            Price: {{ product.price }}$
+<div class="text-center">
+   
+  <div  *ngFor="let product of products; index as productId">
+    <div class="caption">
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br/><br/>
+        <div style="text-align: center">
+        <div class="row">
+ 
+            <div class = "column" >
+              <div class = "card" style="text-align:center">  
+                
+  <h2>          
+     <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+    {{ product.name }}
+  </a>
+</h2>
+<img src = {{product.imageLink}} width="125" height="150">
+          <p style="text-align:left;width:100%" *ngIf="product.description">
+            
+           <B><i>Description: </i></B> <i>{{ product.description }}</i> 
           </p>
-        </td>
-      <td>
-          <button (click)="share()">
-              Share
-            </button>
-      </td>
-    
-      <td>
-          <button (click)="addToCart(product)">
-              Add to cart
-            </button>
-      </td>
-    </tr>
-  </table>
-    
-  
+
+            <p style="text-align:center;width:100%" *ngIf="product.price">
+            <B>Price: ${{ product.price }}</B>
+            </p>
+
+            <button (click)="share()">
+                 Share 
+              
+              </button>
+              &nbsp;
+            <button (click)="addToCart(product)">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>
-
-<a  [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
-
+</div>
+<br/><br/><br/>
+  <div style="text-align: right">
+  <span class="check">
+  <a  [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
+  </span>
+  <br/><br/><br/><br/><br/><br/>
+</div>
+  
+  
