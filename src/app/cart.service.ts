@@ -27,7 +27,7 @@ export class CartService {
   }
 
   getOrderDetails():Observable<HttpResponse<OrderDetails[]>>{
-    return this.httpClient.get<OrderDetails[]>("http://10.165.0.221:3000/orders", {observe:'response'})
+    return this.httpClient.get<OrderDetails[]>("http://localhost:3000/orders", {observe:'response'})
   }
   clearCart() {
     this.items = [];
@@ -42,6 +42,6 @@ export class CartService {
     console.log('create orders');
     console.log(orderdetails);
 
-    this.httpClient.post("http://10.165.0.221:3000/orders", orderdetails, options);
+    this.httpClient.post("http://localhost:3000/orders", orderdetails, options);
   }
 }
